@@ -22,6 +22,7 @@ export default function Home() {
       try {
         const res = await axios.get("https://landing-coe-x-dme.onrender.com/profile");
         const imgMap =res.data.avatar.map((url: string)=>({imageUrl:url}))
+
         setCount(res.data.count)
         setAvatars(imgMap);
       } catch (error) {
@@ -123,7 +124,7 @@ export default function Home() {
                   filter: "drop-shadow(0 0 20px rgba(255, 107, 53, 0.3))",
                 }}
               >
-                CoE x DME First Meet
+                CoE x DME First Meet 
               </motion.span>
             </motion.div>
 
@@ -169,7 +170,7 @@ export default function Home() {
                 {status === "unauthenticated" ? (
                   <Magnet padding={100} disabled={false} magnetStrength={5}>
                     <InteractiveHoverButton onClick={() => signIn("google")}>
-                      Count Me In
+                      Count Me In 
                     </InteractiveHoverButton>
                   </Magnet>
                 ) : (

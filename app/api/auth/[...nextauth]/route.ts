@@ -1,37 +1,43 @@
-import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
-import { signIn } from "next-auth/react";
-import axios from "axios";
-import Email from "next-auth/providers/email";
+import NextAuth from "next-auth"
+import GoogleProvider from "next-auth/providers/google"
+import axios from "axios"
 
-export const handler = NextAuth({
+const authConfig = {
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
   callbacks: {
-    async signIn({ user }) {
+    async signIn({ user }: any) {
       const emailDomain = user.email?.split("@")[1];
-      console.log(emailDomain);
-      if (emailDomain != "kkumail.com") {
+      if (emailDomain !== "kkumail.com") {
+        console.log(`Unauthorized domain: ${emailDomain}`);
         return false;
       }
-      const formData = {
-        email: user.email,
-        profile: user.image,
-      };
+
       try {
-        console.log(formData)
-        const res = await axios.post("https://landing-coe-x-dme.onrender.com/join", formData);
+        await axios.post(
+          "https://landing-coe-x-dme.onrender.com/join",
+          {
+            email: user.email,
+            profile: user.image,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            timeout: 10000,
+          }
+        );
         return true;
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        console.error("Registration failed:", error.response?.data || error.message);
         return false;
       }
     },
-    async session({ session, token }) {
+    async session({ session, token }: any) {
       if (token) {
         session.user.id = token.sub;
         session.user.email = token.email;
@@ -42,8 +48,11 @@ export const handler = NextAuth({
     },
   },
   session: {
-    strategy: "jwt",
+    strategy: "jwt" as const,
   },
-});
+  secret: process.env.AUTH_SECRET,
+}
 
-export { handler as GET, handler as POST };
+const handler = NextAuth(authConfig)
+
+export { handler as GET, handler as POST }

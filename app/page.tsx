@@ -175,7 +175,7 @@ export default function Home() {
                 ) : (
                   <HyperText>
                     {`Hello  ${
-                      session?.user.name?.split(" ")[0] ?? "notfound"
+                      session?.user?.name?.split(" ")[0] ?? "notfound"
                     }`}
                   </HyperText>
                 )}

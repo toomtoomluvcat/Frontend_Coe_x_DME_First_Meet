@@ -11,6 +11,7 @@ import Magnet from "@/components/Magnet";
 import { useRef, useState, useEffect } from "react";
 import { HyperText } from "@/components/magicui/hyper-text";
 import axios from "axios";
+import { useSearchParams } from "next/navigation";
 
 export default function Home() {
   const { data: session, status } = useSession();
@@ -169,12 +170,13 @@ export default function Home() {
               >
                 {status === "unauthenticated" ? (
                   <Magnet padding={100} disabled={false} magnetStrength={5}>
-                    <InteractiveHoverButton onClick={() => signIn("google")}>
+                    <InteractiveHoverButton onClick={() => signIn()}>
                       Count Me In 
                     </InteractiveHoverButton>
                   </Magnet>
                 ) : (
                   <HyperText>
+                   
                     {`Hello  ${
                       session?.user?.name?.split(" ")[0] ?? "notfound"
                     }`}

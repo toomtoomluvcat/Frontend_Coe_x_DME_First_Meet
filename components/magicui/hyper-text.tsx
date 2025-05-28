@@ -124,35 +124,41 @@ export function HyperText({
     return () => cancelAnimationFrame(animationFrameId);
   }, [children, duration, isAnimating, characterSet]);
 
+  // Function to safely convert to uppercase
+  const safeToUpperCase = (char: string | undefined | null): string => {
+    if (!char || typeof char !== 'string') return char || '';
+    return char.toUpperCase();
+  };
+
   return (
-   <MotionComponent
-  ref={elementRef}
-  className={cn(
-    "overflow-hidden py-2 text-4xl font-bold text-center text-[1.4em] sm:text-[2em]",
-    className
-  )}
-  style={{
-    background:
-      "linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ff1744 50%, #e91e63 75%, #9c27b0 100%)",
-    backgroundSize: "200% 200%",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    filter: "drop-shadow(0 0 20px rgba(255, 107, 53, 0.3))",
-    color: "#1E90FF", // เพิ่มสีฟอนต์ที่นี่
-  }}
-  onMouseEnter={handleAnimationTrigger}
-  {...props}
->
-  <AnimatePresence>
-    {displayText.map((letter, index) => (
-      <motion.span
-        key={index}
-        className={cn("font-roboto", letter === " " ? "w-3" : "")}
-      >
-        {letter.toUpperCase()}
-      </motion.span>
-    ))}
-  </AnimatePresence>
-</MotionComponent>
+    <MotionComponent
+      ref={elementRef}
+      className={cn(
+        "overflow-hidden py-2 text-4xl font-bold text-center text-[1.4em] sm:text-[2em]",
+        className
+      )}
+      style={{
+        background:
+          "linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ff1744 50%, #e91e63 75%, #9c27b0 100%)",
+        backgroundSize: "200% 200%",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        filter: "drop-shadow(0 0 20px rgba(255, 107, 53, 0.3))",
+        color: "#1E90FF",
+      }}
+      onMouseEnter={handleAnimationTrigger}
+      {...props}
+    >
+      <AnimatePresence>
+        {displayText.map((letter, index) => (
+          <motion.span
+            key={index}
+            className={cn("font-roboto", letter === " " ? "w-3" : "")}
+          >
+            {safeToUpperCase(letter)}
+          </motion.span>
+        ))}
+      </AnimatePresence>
+    </MotionComponent>
   );
 }

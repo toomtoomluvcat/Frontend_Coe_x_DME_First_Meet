@@ -2,8 +2,6 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import axios from "axios";
 
-
-
 if (!process.env.NEXTAUTH_SECRET) {
   console.warn("WARNING: NEXTAUTH_SECRET is not set in environment variables!");
 }

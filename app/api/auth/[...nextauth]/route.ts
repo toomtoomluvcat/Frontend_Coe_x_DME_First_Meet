@@ -47,6 +47,7 @@ const authConfig = {
       return session;
     },
   },
+  
   session: {
     strategy: "jwt" as const,
   },

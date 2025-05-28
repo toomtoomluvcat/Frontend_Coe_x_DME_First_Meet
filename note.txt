@@ -1,0 +1,35 @@
+  {/* <LayoutGroup>
+              <motion.div
+                layout
+                transition={{
+                  layout: {
+                    duration: 0.4,
+                    ease: [0.4, 0.0, 0.2, 1], // easing ที่นุ่มนวลกว่า
+                    type: "tween",
+                  },
+                }}
+                className="bg-gradient-to-t from-orange-500 to-[#FF0000]  text-white rounded-[20px] px-6 font-bold text-[3em]  inline-block"
+                style={{
+                  willChange: "auto",
+                }}
+              >
+                <RotatingText
+                  texts={["CoE x", "DME x"]}
+                  mainClassName="overflow-hidden justify-center"
+                  staggerFrom={"last"}
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  exit={{ y: "-120%" }}
+                  staggerDuration={0.025}
+                  splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                  transition={{
+                    type: "spring",
+                    damping: 30,
+                    stiffness: 400,
+                    layout: { duration: 0.7 },
+                  }}
+                  rotationInterval={4000}
+                />
+              </motion.div>
+            </LayoutGroup> */}
+              {/* <span className="text-[3em]">First Meet</span> */}

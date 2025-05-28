@@ -4,7 +4,7 @@ function page() {
   return (
     <div>{process.env.GOOGLE_CLIENT_SECRET?? ""}
     <p>{ process.env.GOOGLE_CLIENT_ID}</p>
-    <p>{ process.env.AUTH_SECRET}</p></div>
+    <p>{ process.env.NEXTAUTH_SECRET}</p></div>
   )
 }
 

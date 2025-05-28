@@ -148,7 +148,7 @@ export default function Home() {
                   animation="blurInUp"
                   by="character"
                   once
-                  className="text-center mb-4 text-[#595858] text-[0.8em] sm:text-[1em] max-w-[490px] mx-auto"
+                  className="text-center mb-4 text-[#595858] text-pretty text-[0.8em] sm:text-[1em] max-w-[490px] mx-auto"
                 >
                   Join the exciting CoE & DME freshmen welcome event at Khon
                   Kaen University on June 27th! Click below to show you're

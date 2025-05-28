@@ -51,7 +51,7 @@ const authConfig = {
   session: {
     strategy: "jwt" as const,
   },
-  secret: process.env.AUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
 }
 
 const handler = NextAuth(authConfig)

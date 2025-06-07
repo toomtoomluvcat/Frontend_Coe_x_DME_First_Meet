@@ -13,10 +13,10 @@ export default function Landign() {
     const { data: session, status } = useSession();
     const [problem, setProblem] = useState<{ ID: number, Title: string, Problem: string, ImgUrl: string }>()
     const [code, setCode] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false)
     const [showProblem, setShowProblem] = useState<boolean>(false)
     const getProblem = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-
-        e.preventDefault()
+        e.preventDefault();
         if (!session) {
             signIn('google')
             return
@@ -24,7 +24,6 @@ export default function Landign() {
         const formData = {
             Code: code
         }
-
         try {
             const res = await axios.post("https://landing-coe-x-dme.onrender.com/problem", formData)
             setProblem(res.data)
@@ -58,7 +57,7 @@ export default function Landign() {
                         <Image src={'/GIF/hutao.gif'} className="mx-auto h-24 w-auto" width={200} height={200} quality={100} alt="hutao"></Image>
                         <label className="text-[#880000] font-bold">กรอกโค้ดที่ได้มาจากพี่ๆ ในฐานนั้นๆ</label>
                         <input type="text" className="focus:outline-none border-2 border-[#880000] px-2 py-1 text-[#880000]" value={code} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCode(e.target.value)} />
-                        <button type="submit" className="text-[0.9em] text-[#FFF2EB] bg-[#880000] w-fit px-4 mx-auto px-2 py-1 rounded-[5px]">ยืนยัน</button>
+                        <button type="submit" className="text-[0.9em] text-[#FFF2EB] bg-[#880000] w-fit px-4 mx-auto px-2 py-1 rounded-[5px]" disabled={loading}>{loading ? "กำลังส่ง" : "ยืนยัน"}</button>
                     </form>}
             </div>
             <Coe_footer />

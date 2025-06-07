@@ -56,7 +56,7 @@ export default function Landign() {
 
                                 <div key={user.ID}><div className="flex items-center justify-between" >
                                     <div className="flex gap-x-2   items-center" >
-                                        <Image className="w-6 rounded-full" src={user.Profile} width={100} height={100} quality={100} alt={user.Email}></Image>
+                                        <Image className="w-6 h-6 rounded-full" src={user.Profile} width={100} height={100} quality={100} alt={user.Email}></Image>
                                         <h3 className="text-black hover:underline "> @{user.UserName ?? user.Email.split("@")[0]}</h3>
                                     </div>
                                     <svg onClick={() => chaneInfo(user.Email)} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#00000" viewBox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,48,88H208a8,8,0,0,1,5.66,13.66Z"></path></svg>

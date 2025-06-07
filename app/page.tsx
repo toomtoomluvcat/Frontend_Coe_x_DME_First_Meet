@@ -16,14 +16,13 @@ import { useSearchParams } from "next/navigation";
 export default function Home() {
   const { data: session, status } = useSession();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [count,setCount] =useState<number>()
+  const [count, setCount] = useState<number>()
 
   useEffect(() => {
     const get_profile = async (): Promise<void> => {
       try {
         const res = await axios.get("https://landing-coe-x-dme.onrender.com/profile");
-        const imgMap =res.data.avatar.map((url: string)=>({imageUrl:url}))
-
+        const imgMap = res.data.avatar.map((url: string) => ({ imageUrl: url }))
         setCount(res.data.count)
         setAvatars(imgMap);
       } catch (error) {
@@ -41,7 +40,7 @@ export default function Home() {
   }, []);
 
   const [avatars, setAvatars] = useState<{ imageUrl: string }[]>([
-   
+
   ]);
 
   return (
@@ -73,10 +72,10 @@ export default function Home() {
               animate={
                 isLoaded
                   ? {
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                    }
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                  }
                   : {}
               }
               transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -125,7 +124,7 @@ export default function Home() {
                   filter: "drop-shadow(0 0 20px rgba(255, 107, 53, 0.3))",
                 }}
               >
-                CoE x DME First Meet 
+                CoE x DME First Meet
               </motion.span>
             </motion.div>
 
@@ -171,15 +170,14 @@ export default function Home() {
                 {status === "unauthenticated" ? (
                   <Magnet padding={100} disabled={false} magnetStrength={5}>
                     <InteractiveHoverButton onClick={() => signIn()}>
-                      Count Me In 
+                      Count Me In
                     </InteractiveHoverButton>
                   </Magnet>
                 ) : (
                   <HyperText>
-                   
-                    {`Hello  ${
-                      session?.user?.name?.split(" ")[0] ?? "notfound"
-                    }`}
+
+                    {`Hello  ${session?.user?.name?.split(" ")[0] ?? "notfound"
+                      }`}
                   </HyperText>
                 )}
               </motion.div>

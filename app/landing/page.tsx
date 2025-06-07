@@ -1,7 +1,7 @@
 "use client"
 
 import axios, { AxiosError, isAxiosError } from "axios";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -27,6 +27,10 @@ export default function Landign() {
         }
         const attemp = attempCount + 1
         setAttempCount(attemp)
+        if (!session) {
+            signIn('google')
+            return
+        }
         const formData = {
             Email: session?.user.email,
             Code: code

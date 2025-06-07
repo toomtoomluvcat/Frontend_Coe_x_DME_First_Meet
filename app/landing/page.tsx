@@ -5,6 +5,7 @@ import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Coe_footer from "@/components/coe_footer";
 
 export default function Landign() {
     const { data: session, status } = useSession();
@@ -36,7 +37,7 @@ export default function Landign() {
             Code: code
         }
         try {
-            const res = await axios.put("http://localhost:8000/team", formData)
+            const res = await axios.put("https://landing-coe-x-dme.onrender.com/team", formData)
             setGroupName(res.data.Name)
             setJoinTeam(true)
 
@@ -65,9 +66,7 @@ export default function Landign() {
                             console.log(err)
                         }
                         break
-
                 }
-
             }
         } finally {
             setSubmit(false)
@@ -96,7 +95,7 @@ export default function Landign() {
                         <div className="flex flex-col items-center gap-y-4">
                             <Image src={"/landing/02.svg"} className="w-40" height={800} quality={100} width={800} alt='happy_party'></Image>
                             <h2 className="font-medium text-[1.3em] text-[#880000]">กลุ่ม {groupName}</h2>
-                            <p className="text-center font-normal max-w-[400px] mx-6 text-[1em] text-[#880000]">ยินดีต้อนรับเข้าสู่ทีม {groupName} กิจจะกรรมกำลังจะเริ่มเร็วๆ นี้ สามารถ <span className="text-[#204FC6] underline"><Link href={'/team'}>ตรวจสอบสมาชิกทีม</Link></span> และเมื่อเกมเริ่มขึ้น  <span className="text-[#204FC6] underline"><Link href={'/'}>ไปกันได้เลย</Link></span></p>
+                            <p className="text-center font-normal max-w-[400px] mx-6 text-[1em] text-[#880000]">ยินดีต้อนรับเข้าสู่ทีม {groupName} กิจจะกรรมกำลังจะเริ่มเร็วๆ นี้ สามารถ <span className="text-[#204FC6] underline"><Link href={'/team'}>ตรวจสอบสมาชิกทีม</Link></span> และเมื่อเกมเริ่มขึ้น  <span className="text-[#204FC6] underline"><Link href={'/challengs'}>ไปกันได้เลย</Link></span></p>
 
                         </div>
                         : <div className="flex flex-col">
@@ -108,13 +107,8 @@ export default function Landign() {
                     }
                 </div>
             </div>
-            <footer className="flex justify-center text-[0.8em] mt-4 border-t border-[#880000] text-[#880000]">
-                <Link href='/#'> <div className="px-2 py-[1px] border border-[#880000]">Dev</div></Link>
-                <Link href='/#'><div className="px-2 py-[1px] border border-[#880000]">Rule</div></Link>
-                <Link href='/#'><div className="px-2 py-[1px] border border-[#880000]">Team</div></Link>
-                <Link href='/#'> <div className="px-2 py-[1px] border border-[#880000]">Contact</div></Link>
-                <Link href='/#'><div className="px-2 py-[1px] border border-[#880000]">Game</div></Link>
-            </footer>
+
+            <Coe_footer />
         </div>
     );
 }

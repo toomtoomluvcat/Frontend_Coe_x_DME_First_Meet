@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Teams } from "@/types/team";
 import { useEffect, useState } from "react";
+import Coe_footer from "@/components/coe_footer";
 
 export default function Landign() {
     const { data: session, status } = useSession();
@@ -17,7 +18,7 @@ export default function Landign() {
     const getAllTeam = async (): Promise<void> => {
 
         try {
-            const res = await axios.get("http://localhost:8000/team")
+            const res = await axios.get("https://landing-coe-x-dme.onrender.com/team")
             setTeamData(res.data)
         } catch (err) {
             console.log(err)
@@ -74,13 +75,7 @@ export default function Landign() {
                 </div>
             </div>
 
-            <footer className="flex justify-center text-[0.8em] mt-4 border-t border-[#880000] text-[#880000]">
-                <Link href='/#'> <div className="px-2 py-[1px] border border-[#880000]">Dev</div></Link>
-                <Link href='/#'><div className="px-2 py-[1px] border border-[#880000]">Rule</div></Link>
-                <Link href='/#'><div className="px-2 py-[1px] border border-[#880000]">Team</div></Link>
-                <Link href='/#'> <div className="px-2 py-[1px] border border-[#880000]">Contact</div></Link>
-                <Link href='/#'><div className="px-2 py-[1px] border border-[#880000]">Game</div></Link>
-            </footer>
+            <Coe_footer />
         </div>
     );
 }

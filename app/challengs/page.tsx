@@ -1,11 +1,13 @@
 "use client"
 
 import axios from "axios";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Teams } from "@/types/team";
 import { useEffect, useState } from "react";
+import Coe_footer from "@/components/coe_footer";
+
 
 export default function Landign() {
     const { data: session, status } = useSession();
@@ -13,13 +15,18 @@ export default function Landign() {
     const [code, setCode] = useState<string>('');
     const [showProblem, setShowProblem] = useState<boolean>(false)
     const getProblem = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+
         e.preventDefault()
+        if (!session) {
+            signIn('google')
+            return
+        }
         const formData = {
             Code: code
         }
 
         try {
-            const res = await axios.post("http://localhost:8000/problem", formData)
+            const res = await axios.post("https://landing-coe-x-dme.onrender.com/problem", formData)
             setProblem(res.data)
             setShowProblem(true)
 
@@ -54,14 +61,7 @@ export default function Landign() {
                         <button type="submit" className="text-[0.9em] text-[#FFF2EB] bg-[#880000] w-fit px-4 mx-auto px-2 py-1 rounded-[5px]">ยืนยัน</button>
                     </form>}
             </div>
-
-            <footer className="flex justify-center text-[0.8em] mt-4 border-t border-[#880000] text-[#880000]">
-                <Link href='/#'> <div className="px-2 py-[1px] border border-[#880000]">Dev</div></Link>
-                <Link href='/#'><div className="px-2 py-[1px] border border-[#880000]">Rule</div></Link>
-                <Link href='/team'><div className="px-2 py-[1px] border border-[#880000]">Team</div></Link>
-                <Link href='/#'> <div className="px-2 py-[1px] border border-[#880000]">Contact</div></Link>
-                <Link href='/#'><div className="px-2 py-[1px] border border-[#880000]">Game</div></Link>
-            </footer>
+            <Coe_footer />
         </div>
     );
 }

@@ -15,6 +15,12 @@ export default function Landign() {
     const [code, setCode] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false)
     const [showProblem, setShowProblem] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (status === 'unauthenticated') {
+            signIn('google')
+        }
+    }, [])
     const getProblem = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
         if (!session) {

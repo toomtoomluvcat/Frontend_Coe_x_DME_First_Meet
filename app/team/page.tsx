@@ -52,9 +52,9 @@ export default function Landign() {
                             <div className="flex px-2 py-1 bg-[#5599AA] items-center justify-between">
                                 <h1 className="font-bold">{item.Name}</h1>
                             </div>
-                            <div className="bg-[#EEFFFF]  p-4">{item.Joins.map((user) => (
+                            <div className="bg-[#EEFFFF]  p-4 space-y-2">{item.Joins.map((user) => (
 
-                                <div key={user.ID}><div className="flex  items-center justify-between" >
+                                <div key={user.ID}><div className="flex items-center justify-between" >
                                     <div className="flex gap-x-2   items-center" >
                                         <Image className="w-6 rounded-full" src={user.Profile} width={100} height={100} quality={100} alt={user.Email}></Image>
                                         <h3 className="text-black hover:underline "> @{user.UserName ?? user.Email.split("@")[0]}</h3>

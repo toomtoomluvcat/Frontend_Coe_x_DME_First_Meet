@@ -1,6 +1,6 @@
 "use client"
 
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useState, FormEvent, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
@@ -58,6 +58,8 @@ export default function Profile() {
     useEffect(() => {
         if (status === "authenticated" && session?.user.email) {
             handleGetProfile();
+        } else if (status === 'unauthenticated') {
+            signIn('google')
         }
     }, [status]);
     const handleSubmit = async (e: FormEvent) => {

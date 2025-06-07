@@ -18,6 +18,12 @@ export default function Landign() {
     const [groupName, setGroupName] = useState<string>('')
 
 
+    useEffect(() => {
+        if (status === 'unauthenticated') {
+            signIn('google')
+        }
+    }, [])
+
     const joinTeamByCode = async (): Promise<void> => {
 
         setSubmit(true)

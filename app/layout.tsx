@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono,Roboto } from "next/font/google";
+import { Sarabun, Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
 import ClientSessionProvider from "./client_session";
 
 
+const sarabun = Sarabun({
+  variable: "--font-sarabun",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"]
+})
+
 const roboto = Roboto({
-  variable:"--font-roboto",
-  subsets:["latin"],
+  variable: "--font-roboto",
+  subsets: ["latin"],
 })
 
 const geistSans = Geist({
@@ -32,9 +38,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${roboto.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${sarabun.variable} ${roboto.variable} ${geistMono.variable} antialiased`}
       ><ClientSessionProvider>
-        {children}</ClientSessionProvider>
+          {children}</ClientSessionProvider>
       </body>
     </html>
   );

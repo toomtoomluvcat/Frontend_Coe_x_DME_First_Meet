@@ -4,6 +4,9 @@ import { useSession } from "next-auth/react";
 import { useState, FormEvent, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
+import Coe_footer from "@/components/coe_footer";
+import Link from "next/link";
+
 
 interface ProfileForm {
     Email: string;
@@ -85,8 +88,13 @@ export default function Profile() {
     };
 
     return (
-        <div className="min-h-screen [background:linear-gradient(180deg,rgba(253,188,152,1)_0%,rgba(255,243,230,1)_35%)] font-sarabun text-sm text-[#380000] flex justify-center pt-12 px-4">
+        <div className="min-h-screen [background:linear-gradient(180deg,rgba(253,188,152,1)_0%,rgba(255,243,230,1)_35%)] font-sarabun text-sm text-[#380000] flex items-center flex-col justify-center pt-6 px-4">
+            <div className="flex mx-auto justify-center items-center mb-4">
+                <Image src={"/landing/01.svg"} className="w-12 sm:w-16" height={500} quality={100} width={500} alt='logo'></Image>
+                <h1 className="text-center font-bold text-[#880000] text-wrap sm:text-[2em] text-[1.3em]">CoE_x_DME_First_Meet</h1>
+            </div>
             <div className="w-full max-w-xl border h-fit border-[#880000] pb-4 bg-[#FFF2EB] ">
+
                 <header className="mb-2 flex items-center space-x-3  text-[#FFF2EB] bg-[#880000]">
 
                     <h1 className="text-[1.1em] py-1 px-2 font-bold">กรอกข้อมูลโปรไฟล์</h1>
@@ -187,6 +195,13 @@ export default function Profile() {
                     </p>
                 )}
             </div>
+            <div className=' w-full'><footer className="flex justify-center items-center text-[0.8em] mt-4 border-t border-[#880000] text-[#880000]">
+                <Link href='/landing'> <div className="px-2 py-[1px] border border-[#880000]">Join</div></Link>
+                <Link href='/team'><div className="px-2 py-[1px] border border-[#880000]">Team</div></Link>
+                <Link href='/profile'><div className="px-2 h-full py-[1px] border border-[#880000]">profile</div></Link>
+                <Link href='/#'> <div className="px-2  h-full py-[1px] border border-[#880000]">Contact</div></Link>
+                <Link href='/challengs'><div className="px-2 h-full py-[1px] border border-[#880000]">Game</div></Link>
+            </footer></div>
         </div>
     );
 }

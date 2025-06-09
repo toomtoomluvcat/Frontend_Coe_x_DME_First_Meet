@@ -201,3 +201,23 @@
   color: transparent;
   animation: gradient linear infinite;
 }
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Alternative pulsing glow effect */
+@keyframes pulseGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 8px 25px rgba(255, 107, 53, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 12px 35px rgba(255, 107, 53, 0.6));
+  }
+}

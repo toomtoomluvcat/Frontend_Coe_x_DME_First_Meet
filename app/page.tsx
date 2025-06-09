@@ -11,19 +11,24 @@ import Magnet from "@/components/Magnet";
 import { useRef, useState, useEffect } from "react";
 import { HyperText } from "@/components/magicui/hyper-text";
 import axios from "axios";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 export default function Home() {
   const { data: session, status } = useSession();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [count, setCount] = useState<number>()
+  const [count, setCount] = useState<number>();
 
   useEffect(() => {
     const get_profile = async (): Promise<void> => {
       try {
-        const res = await axios.get("https://landing-coe-x-dme.onrender.com/profile");
-        const imgMap = res.data.avatar.map((url: string) => ({ imageUrl: url }))
-        setCount(res.data.count)
+        const res = await axios.get(
+          "https://landing-coe-x-dme.onrender.com/profile"
+        );
+        const imgMap = res.data.avatar.map((url: string) => ({
+          imageUrl: url,
+        }));
+        setCount(res.data.count);
         setAvatars(imgMap);
       } catch (error) {
         console.log(error);
@@ -39,9 +44,7 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  const [avatars, setAvatars] = useState<{ imageUrl: string }[]>([
-
-  ]);
+  const [avatars, setAvatars] = useState<{ imageUrl: string }[]>([]);
 
   return (
     <div
@@ -72,10 +75,10 @@ export default function Home() {
               animate={
                 isLoaded
                   ? {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                  }
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                    }
                   : {}
               }
               transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -174,11 +177,58 @@ export default function Home() {
                     </InteractiveHoverButton>
                   </Magnet>
                 ) : (
-                  <HyperText>
+                  <button className="mt-6">
+                    <Link
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ff1744 50%, #e91e63 75%, #9c27b0 100%)",
+                        backgroundSize: "200% 200%",
+                        animation: "gradientShift 3s ease infinite",
+                        filter:
+                          "drop-shadow(0 8px 25px rgba(255, 107, 53, 0.4))",
+                        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      }}
+                      className="
+    relative overflow-hidden
+    px-6 py-3 
+    text-[1.1em]  text-white 
+    rounded-xl
+    transform hover:scale-105 hover:shadow-2xl
+    active:scale-95
+    cursor-pointer
+    border border-white/20
+    backdrop-blur-sm
+    group
+  "
+                      href="https://kku.world/svbmto"
+                    >
+                      <span className="relative z-10 tracking-wide">
+                        Register Now
+                      </span>
 
-                    {`Hello  ${session?.user?.name?.split(" ")[0] ?? "notfound"
-                      }`}
-                  </HyperText>
+                      {/* Shine effect overlay */}
+                      <div
+                        className="
+    absolute inset-0 
+    bg-gradient-to-r from-transparent via-white/20 to-transparent
+    transform -skew-x-12 -translate-x-full
+    group-hover:translate-x-full
+    transition-transform duration-700 ease-out
+  "
+                      ></div>
+
+                      {/* Inner glow */}
+                      <div
+                        className="
+    absolute inset-0.5 
+    bg-gradient-to-r from-white/10 to-transparent 
+    rounded-xl
+    opacity-0 group-hover:opacity-100
+    transition-opacity duration-300
+  "
+                      ></div>
+                    </Link>
+                  </button>
                 )}
               </motion.div>
             </motion.div>

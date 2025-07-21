@@ -37,7 +37,10 @@ const authConfig = {
         );
         return true;
       } catch (error: any) {
-        console.error("Registration failed:", error.response?.data || error.message);
+        console.error(
+          "Registration failed:",
+          error.response?.data || error.message
+        );
         return false;
       }
     },

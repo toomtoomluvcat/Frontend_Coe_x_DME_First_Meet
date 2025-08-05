@@ -74,8 +74,8 @@ export default function Landign() {
               </h1>
               <div className="p-2 text-[0.8em]">{problem?.Problem}</div>
               <img
-                src={problem?.ImgUrl ?? ""}
-                className="mx-auto h-48 w-auto"
+               src={"/scanvenger_hint/"+(problem?.ImgUrl ?? "")}
+                className="mx-auto h-60 w-auto"
                 width={500}
                 height={500}
                 alt="problem"

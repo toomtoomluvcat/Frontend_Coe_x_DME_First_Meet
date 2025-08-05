@@ -1,9 +1,13 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-   images: {
-    domains: ['avatars.githubusercontent.com','lh3.googleusercontent.com'],
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    domains: [
+      'imageproxy.ifunny.co',
+      'lh3.googleusercontent.com', // Google Photos
+      'drive.google.com',          // Google Drive share link
+      'drive.usercontent.google.com' // Google Drive direct download
+    ],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

@@ -75,8 +75,8 @@ export default function Landign() {
                           alt={user.Email}
                         ></Image>
                         <h3 className="text-black hover:underline ">
-                          {" "}
-                          @{user.UserName ?? user.Email.split("@")[0]}
+                          @{user.UserName == ""? user.Email.split("@")[0]: user.UserName}
+                          {/*  */}
                         </h3>
                       </div>
                       <svg

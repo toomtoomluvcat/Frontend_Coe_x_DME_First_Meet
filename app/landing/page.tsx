@@ -140,7 +140,7 @@ export default function Landign() {
                 กลุ่ม {groupName}
               </h2>
               <p className="text-center font-normal max-w-[400px] mx-6 text-[1em] text-[#880000]">
-                ยินดีต้อนรับเข้าสู่ทีม {groupName} กิจจะกรรมกำลังจะเริ่มเร็วๆ
+                ยินดีต้อนรับเข้าสู่ทีม {groupName} กิจกรรมกำลังจะเริ่มเร็วๆ
                 นี้ สามารถ{" "}
                 <span className="text-[#204FC6] underline">
                   <Link href={"/team"}>ตรวจสอบสมาชิกทีม</Link>

@@ -8,7 +8,7 @@ function Coe_footer() {
             <Link href='/team'><div className="px-2 py-[1px] border border-[#880000]">Team</div></Link>
             <Link href='/profile'><div className="px-2 h-full py-[1px] border border-[#880000]">profile</div></Link>
             <Link href='/#'> <div className="px-2  h-full py-[1px] border border-[#880000]">Contact</div></Link>
-            <Link href='/challengs'><div className="px-2 h-full py-[1px] border border-[#880000]">Game</div></Link>
+            <Link href='/challenges'><div className="px-2 h-full py-[1px] border border-[#880000]">Game</div></Link>
         </footer></div>
     )
 }

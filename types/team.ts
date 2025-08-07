@@ -14,4 +14,5 @@ interface Join {
   Link_1: string;
   Link_2: string;
   Link_3: string;
+  Rainbow:boolean
 }

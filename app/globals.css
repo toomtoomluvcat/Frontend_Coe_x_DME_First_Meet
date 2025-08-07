@@ -229,3 +229,18 @@
     filter: drop-shadow(0 12px 35px rgba(255, 107, 53, 0.6));
   }
 }
+
+@keyframes rainbow-text {
+  0% { color: red; }
+  14% { color: orange; }
+  28% { color: yellow; }
+  42% { color: green; }
+  57% { color: blue; }
+  71% { color: indigo; }
+  85% { color: violet; }
+  100% { color: red; }
+}
+
+.text-rainbow {
+  animation: rainbow-text 3s infinite
+}

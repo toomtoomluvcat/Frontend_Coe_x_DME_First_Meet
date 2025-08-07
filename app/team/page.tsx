@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Teams } from "@/types/team";
 import { useEffect, useState } from "react";
 import Coe_footer from "@/components/coe_footer";
+import { Rainbow } from "lucide-react";
 
 export default function Landign() {
   const { data: session, status } = useSession();
@@ -20,6 +21,7 @@ export default function Landign() {
       const res = await axios.get(
         "https://landing-coe-x-dme.onrender.com/team"
       );
+      // console.log(res.data)
       setTeamData(res.data);
     } catch (err) {
       console.log(err);
@@ -74,10 +76,12 @@ export default function Landign() {
                           quality={100}
                           alt={String(user.ID)}
                         ></Image>
-                        <h3 className="text-black hover:underline ">
-                          @{user.UserName == ""? user.Email.split("@")[0]: user.UserName}
-                          {/*  */}
-                        </h3>
+                      <h3
+                        className={`hover:underline ${user.Rainbow ? "text-rainbow animate-rainbow" : "text-black"}`}
+                      >
+                        @{user.UserName === "" ? user.Email.split("@")[0] : user.UserName}
+                      </h3>
+
                       </div>
                       <svg
                         onClick={() => chaneInfo(user.Email)}

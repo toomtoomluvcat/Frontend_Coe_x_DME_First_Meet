@@ -72,7 +72,7 @@ export default function Landign() {
                           width={100}
                           height={100}
                           quality={100}
-                          alt={user.Email}
+                          alt={String(user.ID)}
                         ></Image>
                         <h3 className="text-black hover:underline ">
                           @{user.UserName == ""? user.Email.split("@")[0]: user.UserName}

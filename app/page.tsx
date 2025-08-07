@@ -9,6 +9,8 @@ import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-b
 import { useEffect,useState } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import ClickSpark from "@/components/ClickSpark";
 
 export default function RetroGridDemo() {
   const { data: session, status } = useSession();
@@ -42,9 +44,17 @@ export default function RetroGridDemo() {
 
   const [avatars, setAvatars] = useState<{ imageUrl: string }[]>([]);
   return (
-    <div className="relative flex h-[900px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
-      
+    <div className="relative flex w-full h-[900px] flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
+      <ClickSpark
+  sparkColor='#000'
+  sparkSize={20}
+  sparkRadius={15}
+  sparkCount={8}
+  duration={400}
+>
+      <SmoothCursor />
       <RetroGrid />
+      <div className="flex flex-col items-center h-full justify-center">
       <AvatarCircles numPeople={count} avatarUrls={avatars} />
       <span className="pointer-events-none mt-4 z-10 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-7xl font-bold leading-none tracking-tighter text-transparent">
         CoE x DME First Meet
@@ -114,6 +124,10 @@ export default function RetroGridDemo() {
                   </button>
                 )}
                 </div>
+                </div>
+
+  {/* Your content here */}
+</ClickSpark>
       </div>
   );
 }

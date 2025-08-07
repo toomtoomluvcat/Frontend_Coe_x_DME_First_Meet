@@ -7,7 +7,8 @@ import Link from "next/link";
 import { Teams } from "@/types/team";
 import { useEffect, useState } from "react";
 import Coe_footer from "@/components/coe_footer";
-import { Rainbow } from "lucide-react";
+import ClickSpark from "@/components/ClickSpark";
+
 
 export default function Landign() {
   const { data: session, status } = useSession();

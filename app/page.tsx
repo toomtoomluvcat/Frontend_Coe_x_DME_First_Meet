@@ -59,7 +59,7 @@ export default function RetroGridDemo() {
       <span className="pointer-events-none mt-4 z-10 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-7xl font-bold leading-none tracking-tighter text-transparent">
         CoE x DME First Meet
       </span>
-      <p className="mt-8 z-11 text-zinc-600 md:max-w-[800px] text-xl px-6 text-center">Join the exciting CoE & DME freshmen welcome event at Khon Kaen University on June 27th! Click below to show you're interested.</p>  
+      <p className="mt-8 z-11 text-zinc-600 md:max-w-[800px] text-xl px-6 text-center">Join the exciting CoE & DME freshmen welcome event at Khon Kaen University on August 9th! Click below to show you're interested.</p>  
       
       {/*button under */}
        <div className="mt-8">

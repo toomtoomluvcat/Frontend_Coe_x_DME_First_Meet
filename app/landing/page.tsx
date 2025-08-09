@@ -101,7 +101,7 @@ export default function Landign() {
           <div className="mb-8  sm:mx-4 mx-0 border border-[#880000] ">
             <div className="py-2 px-4 bg-[#880000] text-white flex justify-between items-center">
               <h3 className=" text-[0.6em] sm:text-[0.8em]">
-                Trip!
+                Tech Trip!
               </h3>
               <p
                 className="text-[0.7em] sm:text-[1em]"
@@ -111,7 +111,7 @@ export default function Landign() {
               </p>
             </div>
             <h2 className="bg-[#FFF2EB] px-4 py-4 text-[#880000] sm:text-[0.8em] text-[0.7em]  font-thin indent-[20px] text-justify">
-               ไผ่บอกว่าถ้ากรอก Instagram ชื่อจะกลายเป็นสีรุ้งล่ะ 🥳🎉🎊
+               ไผ่บอกว่าถ้ากรอก Instagram ในหน้าเปลี่ยน Profile ด้านล่าง แล้วชื่อจะกลายเป็นสีรุ้งล่ะ 🥳🎉🎊
             </h2>
           </div>
         )}

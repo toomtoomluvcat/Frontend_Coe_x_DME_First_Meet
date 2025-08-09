@@ -15,7 +15,8 @@ export default function Landign() {
   const [joinTeam, setJoinTeam] = useState<boolean>(false);
   const [teamData, setTeamData] = useState<Teams[]>([]);
   const [showInfo, setShowInfo] = useState<string>("");
-  const [idList,setIdList] = useState<number[]>([97,3])
+  const [idList, setIdList] = useState<number[]>([97, 3, 113, 4])
+  const [idName, setIdName] = useState<number[]>([113, 4]);
 
   const getAllTeam = async (): Promise<void> => {
     try {
@@ -69,7 +70,7 @@ export default function Landign() {
                   <div key={user.ID}>
                     <div className="flex items-center justify-between">
                       <div className="flex gap-x-2 items-center">
-                        <div className={idList.includes(user.ID)? "neon-frame":""}>
+                        <div className={idList.includes(user.ID) ? "neon-frame" : ""}>
                           <Image
                             className="w-6 h-6 rounded-full"
                             src={user.Profile}
@@ -81,8 +82,7 @@ export default function Landign() {
                         </div>
 
                         <h3
-                          className={`hover:underline ${user.Rainbow ? "text-rainbow animate-rainbow" : "text-black"
-                            }`}
+                          className={`hover:underline ${user.Rainbow ? `text-rainbow animate-rainbow ${idName.includes(user.ID) ? "font-bold text-[30px]" : ""}` : "text-black"}`}
                         >
                           @{user.UserName === "" ? user.Email.split("@")[0] : user.UserName}
                         </h3>

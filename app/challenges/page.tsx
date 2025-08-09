@@ -95,10 +95,10 @@ export default function Landign() {
             onSubmit={(e) => getProblem(e)}
           >
             <Image
-              src={"/GIF/hutao.gif"}
-              className="mx-auto h-24 w-auto"
-              width={200}
-              height={200}
+              src={"/game/0"+(Math.floor(Math.random()*2)+1)+".jpg"}
+              className="mx-auto h-36 w-auto"
+              width={300}
+              height={300}
               quality={100}
               alt="hutao"
             ></Image>

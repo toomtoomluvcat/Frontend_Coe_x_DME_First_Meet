@@ -7,7 +7,6 @@ import Link from "next/link";
 import { Teams } from "@/types/team";
 import { useEffect, useState } from "react";
 import Coe_footer from "@/components/coe_footer";
-import ClickSpark from "@/components/ClickSpark";
 
 
 export default function Landign() {
@@ -16,6 +15,7 @@ export default function Landign() {
   const [joinTeam, setJoinTeam] = useState<boolean>(false);
   const [teamData, setTeamData] = useState<Teams[]>([]);
   const [showInfo, setShowInfo] = useState<string>("");
+  const [idList,setIdList] = useState<number[]>([97])
 
   const getAllTeam = async (): Promise<void> => {
     try {
@@ -68,22 +68,26 @@ export default function Landign() {
                 {item.Joins.map((user) => (
                   <div key={user.ID}>
                     <div className="flex items-center justify-between">
-                      <div className="flex gap-x-2   items-center">
-                        <Image
-                          className="w-6 h-6 rounded-full"
-                          src={user.Profile}
-                          width={100}
-                          height={100}
-                          quality={100}
-                          alt={String(user.ID)}
-                        ></Image>
-                      <h3
-                        className={`hover:underline ${user.Rainbow ? "text-rainbow animate-rainbow" : "text-black"}`}
-                      >
-                        @{user.UserName === "" ? user.Email.split("@")[0] : user.UserName}
-                      </h3>
+                      <div className="flex gap-x-2 items-center">
+                        <div className={idList.includes(user.ID)? "neon-frame":""}>
+                          <Image
+                            className="w-6 h-6 rounded-full"
+                            src={user.Profile}
+                            width={100}
+                            height={100}
+                            quality={100}
+                            alt={String(user.ID)}
+                          />
+                        </div>
 
+                        <h3
+                          className={`hover:underline ${user.Rainbow ? "text-rainbow animate-rainbow" : "text-black"
+                            }`}
+                        >
+                          @{user.UserName === "" ? user.Email.split("@")[0] : user.UserName}
+                        </h3>
                       </div>
+
                       <svg
                         onClick={() => chaneInfo(user.Email)}
                         xmlns="http://www.w3.org/2000/svg"

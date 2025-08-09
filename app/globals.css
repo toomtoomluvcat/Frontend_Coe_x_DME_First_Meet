@@ -244,3 +244,48 @@
 .text-rainbow {
   animation: rainbow-text 6s infinite
 }
+
+@keyframes neon-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px #ff0000,
+      0 0 8px #ff1a1a,
+      0 0 15px #ff3333,
+      0 0 20px #ff4d4d,
+      0 0 40px #ff0000;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    box-shadow: 
+      0 0 7px #ff4d4d,
+      0 0 12px #ff1a1a,
+      0 0 24px #ff0000,
+      0 0 40px #ff0000,
+      0 0 60px #ff1a1a;
+    filter: hue-rotate(-20deg);
+  }
+}
+
+@keyframes spin-border {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.neon-frame {
+  position: relative;
+  border-radius: 50%;
+  animation: neon-glow 1.5s ease-in-out infinite;
+}
+
+.neon-frame::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  padding: 2px;
+  background: conic-gradient(#ff0000, #ff4d4d, #ff0000);
+  animation: spin-border 4s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}

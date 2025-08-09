@@ -15,7 +15,7 @@ export default function Landign() {
   const [joinTeam, setJoinTeam] = useState<boolean>(false);
   const [teamData, setTeamData] = useState<Teams[]>([]);
   const [showInfo, setShowInfo] = useState<string>("");
-  const [idList,setIdList] = useState<number[]>([97])
+  const [idList,setIdList] = useState<number[]>([97,3])
 
   const getAllTeam = async (): Promise<void> => {
     try {

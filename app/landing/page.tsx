@@ -137,7 +137,7 @@ export default function Landign() {
                 </span>{" "}
                 และเมื่อเกมเริ่มขึ้น{" "}
                 <span className="text-[#204FC6] underline">
-                  <Link href={"/challengs"}>ไปกันได้เลย</Link>
+                  <Link href={"/challenges"}>ไปกันได้เลย</Link>
                 </span>
               </p>
             </div>
